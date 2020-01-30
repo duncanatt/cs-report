@@ -1,0 +1,48 @@
+%!TEX root=main.tex
+\chapter{Introduction}\label{ch:introduction}
+
+Numerous software systems are nowadays architected in terms of \emph{asynchronous components}~\cite{Chappell2004,Josuttis2007,AghaMST97} that execute independently to one another without recourse to a global clock or shared state.
+%
+Instead, components interact together via well-defined interfaces and non-blocking messaging~\cite{HohpeWoolf2003} to create dynamic and loosely-coupled software organisations.
+%
+Such architectures facilitate incremental updates, tolerate independent component failures and permit the various units of execution to be \emph{distributed} across different locations~\cite{Garg2014,DollimoreKindbergCoulouris2005}. 
+%
+Despite their advantages, these systems are notoriously hard to design, and even harder to program and get right, and ensuring their correctness in terms of their expected behaviour becomes paramount.
+
+\section{Distributed Runtime Verification}
+
+While distributed systems inherit the characteristics inherent to asynchronous settings, their execution is further complicated due to physical constraints, such as the lack of a global clock and possibility of independent failures~\cite{Ghosh2014,DollimoreKindbergCoulouris2005}.
+%
+In the local asynchronous case, traditional pre-deployment verification techniques such as model checking and testing~\cite{ClarkeGrumbergPeled1999,MyersSandlerBadgett2011} often \emph{scale poorly} because the set of execution paths considered is invariably dwarfed by the vast number of possible execution paths of the system.
+%
+In a distributed scenario, use of these verification approaches is often problematic, if not \emph{impractical}, due to the aforementioned complications. 
+
+\emph{Runtime Verification} (\RV)~\cite{LeuckerS09,FalconeFM12} is complementary approach that evades some of the limitations of pre-deployment techniques by deferring the analysis until runtime.
+%
+It employs \emph{monitors}
+%
+to \emph{incrementally} analyse the system's behaviour (exhibited as a sequence of \emph{trace} events) up to the current execution point, to determine whether a correctness specification under investigation is satisfied or violated.
+
+\ldots
+ 
+\begin{example}\label{eg:local}
+  Consider the system \kSys composed of processes \kP and \kQ, given in terms of the \emph{labelled transition systems} in \cref{fig:lts}.
+  %
+  \kP can initially fork (denoted by action \actiont{f}) a process, after which it either sends (\actiont{s}) a message and exits (\actiont{e}), or exits (\actiont{e}) immediately; \kQ is a simpler process that performs a single receive (\actiont{r}) and exits (\actiont{e}).
+  %
+  A possible correctness property states that \quot{\kSys does not fork processes at startup}.
+
+  \medskip
+  When \kSys exhibits the witness trace \trace{f,r,e,e}, the monitor can detect a violation of this property.
+  %
+  For a different execution interleaving, \eg \trace{r,e,f,e} (where \trace{f} is not the first event), the typical \RV analysis would be unable to detect the fact that \kSys is capable of performing \actiont{f}.
+  %
+  Recouping this \emph{lack of precision} is possible, but this would require the specification to consider \emph{all} the possible trace event permutations that the composition of \kP and \kQ may exhibit (\cref{fig:lts_sys}). 
+  %
+  One easily observes that adding new components to \kSys aggravates the specification task to the point where it becomes unwieldy and error-prone.
+  Reformulating the original property to consider \kP in isolation, \ie \quot{\kP does not fork processes at startup}, eliminates the need to account for the behaviour of other nonrelevant components.
+\end{example}
+
+\ldots
+
+\input{figs/lts}

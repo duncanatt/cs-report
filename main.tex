@@ -1,0 +1,73 @@
+%!TEX root=main.tex
+%!TEX spellcheck=en_GB
+%!TEX program=pdflatex
+
+% Include preamble.
+\input{preamble}
+
+% Set title and subtitle
+\title{Ensuring Correctness in\\Distributed Systems}
+\subtitle{An example report}
+
+% Set document coordinates and date.
+\author{Duncan Paul Attard}
+\department{Department of Computer Science}
+\faculty{Faculty of ICT}
+\supervisors{Adrian Francalanza\\Luca Aceto\\Anna Ing\'olfsd\'ottir}
+\date{\today}
+
+\begin{document}
+
+  % Make title page.
+  \maketitle
+
+  \begin{abstract}
+    
+    A number of software systems today are built in terms of independently executing components that typically reside on different physical locations.
+    %
+    While these software organisations offer a number of advantages, including the use of replication to improve robustness and quality of service, they are hard to design and implement. 
+    %
+    Ascertaining their correctness, therefore, becomes a chief concern.
+    %
+    Traditional formal verification techniques, such as testing or model checking, tend to be applied with limited success in these scenarios due to a number of reasons.
+    %
+    Runtime verification may be employed as a lightweight and dynamic alternative that complements the aforementioned verification approaches.
+    
+    \ldots
+  \end{abstract}
+
+
+  % Disable protrusion for TOC, list of figures etc. so that certain 
+  % numbers (e.g. 7) do not spill out of the boundary of the right margin but 
+  % remain on the same margin as the rest of the other numbers.
+  \microtypesetup{protrusion=false} 
+  
+  % Switch to roman page numbering until main manuscript body.
+  \pagenumbering{roman}
+
+  % Configure and show TOC and LOF.
+  \setcounter{tocdepth}{2}
+  \tableofcontents
+  \addtocontents{toc}{~\hfill\textbf{Page}\par}
+  \listoffigures
+  
+  % Re-enable protrusion as this is typographically nice to have for the rest of 
+  % the text in the manuscript.
+  \microtypesetup{protrusion=true}
+  \clearpage
+
+  % Switch page numbering to roman and include main manuscript content.
+  \pagenumbering{arabic}
+
+  \input{chapter_1}
+
+  \input{chapter_2}
+
+  % Add bibliography.
+  \bibliographystyle{abbrv}
+  \bibliography{bibliography}
+
+  \appendix
+  \input{appendix}
+
+\end{document}

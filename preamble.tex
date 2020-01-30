@@ -1,0 +1,94 @@
+%!TEX root=main.tex
+\documentclass[11pt,a4paper]{csreport}
+
+
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+% Package imports with basic inlined configuration.
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% Provides support for drawing vector-based figures.
+\usepackage{tikz}
+
+% Provides support for handling floating figures.
+\usepackage{float}
+
+% Provides support for handling sub floating figures.
+\usepackage{subfig}
+
+% Provides additional mathematical fonts and symbols.
+\usepackage{amsfonts}
+
+% Provides support for mathematical formulae.
+\usepackage{amsmath}
+
+% Provides additional mathematical symbols (such as black square, etc.).
+\usepackage{amssymb}
+
+% Provides support for defining mathematical theorems and definitions.
+\usepackage{amsthm}
+
+% Provides extended support for the array and tabular environments for optional 
+% column formats.
+\usepackage{array}
+
+% Provides support for multirow tables.
+\usepackage{multirow}
+
+% Provides miscellaneous mathematical symbols (such as denotation brackets).
+\usepackage{stmaryrd}
+
+% Provides support for modifying standard enumerations (such as inline lists,
+% roman numerals in lists, etc.).
+\usepackage[inline]{enumitem}
+
+% Provides miscellaneous dingbats (such as check marks, ticks, etc.).
+\usepackage{pifont}
+
+% Provides support for low-level string processing (such as string chopping).
+\usepackage{xstring}
+
+% Provides support for including and displaying code listings for various 
+% languages.
+\usepackage{listings}
+
+% Provides support for typesetting algorithm pseudo code. Automatically imports
+% Algorithmicx package, since Algpseudocode is a layout for Algorithmicx.
+\usepackage[end]{algpseudocode}
+
+% Provides support for displaying algorithms as floats.
+\usepackage[plain]{algorithm}
+
+% Provides support for generating hyperlinks for in-document cross-referencing
+% and web URLs.
+\usepackage[linktocpage=true, hypertexnames=false]{hyperref}
+
+% Provides support for automatically including caption labels with references.
+% Cleveref should be always included AFTER Hyperref!
+\usepackage[nameinlink]{cleveref}
+
+
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+% Additional package-specific configuration.
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% Configure Cleveref label names.
+\newcommand{\crefrangeconjunction}{--}
+\crefname{figure}{figure}{figures}
+\crefname{example}{example}{examples}
+\crefname{section}{section}{sections}
+\crefname{chapter}{chapter}{chapters}
+\crefname{table}{table}{tables}
+\crefname{appendix}{appendix}{appendices}
+
+% Configure Hyperref colours.
+\hypersetup{
+  colorlinks,
+  linkcolor=darkred,
+  citecolor=darkgreen,
+  urlcolor=darkblue
+}
+
+% Includes.
+\input{preamble/notation}
+\input{preamble/prose}
+\input{preamble/graphic}

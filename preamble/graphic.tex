@@ -1,0 +1,47 @@
+%!TEX root=../main.tex
+
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+% Additional TikZ configuration.
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% Imported TikZ libraries.
+\usetikzlibrary {
+  matrix,
+  shapes,
+  arrows,
+  shadows,
+  calc,
+  chains,
+  decorations.pathmorphing,
+  decorations.text,
+  arrows.meta,
+  patterns,
+  fit
+}
+
+
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+% Graphic objects.
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% Custom shapes.
+\tikzset{
+  label/.style={
+    font=\scriptsize\itshape,
+    inner sep=0.4em
+  },
+  point/.style={
+    circle,
+    fill=black,
+    text width=0.3em,
+    inner sep=0
+  },
+  state/.style={
+    circle,
+    text width=0.8em,
+    inner sep=0.1em,
+    text depth=0.08em,
+    draw,
+    font=\scriptsize
+  }
+}

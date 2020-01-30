@@ -1,0 +1,76 @@
+\begin{figure}[b!]
+  \pframe{
+    \centering
+    \subfloat[The labelled transition systems for processes \kP and \kQ\label{fig:lts_pq}]{
+      \begin{tikzpicture}[>=stealth', shorten >=0.05em, shorten <=0.05em, auto, node distance=2em]
+        \draw[shift={(-5.5em,0)}, color=white] (0em,0em) rectangle (16em,1em);
+
+        % Draw process P.
+        \node[point] (p0) {};
+        \node[point, below=of p0] (p1) {};
+        \node[point, below=of p1, xshift=2em] (p2) {};
+        \node[point, below=of p1, xshift=-2em] (p3) {};
+        \node[label, above=0 of p0]{\textcolor{white}{\kQ}\!\!\!\!\!\kP};
+
+        % Draw process Q.
+        \node[point, right=6em of p0] (q0) {};
+        \node[point, below=of q0] (q1) {};
+        \node[point, below=of q1] (q2) {};
+        \node[label, above=0 of q0]{\kQ};
+
+        % Draw transitions between P nodes.
+        \path[-stealth', font=\tiny\ttfamily, left]
+          (p0) edge [line width=1pt] node [xshift=0.1em] {f} (p1)
+          (p1) edge node [right, xshift=0.1em, pos=0.3] {e} (p2)
+          (p1) edge node [pos=0.3] {s} (p3)
+          (p3) edge [out=330, in=210] node [below] {e} (p2);
+        
+        % Draw transitions between Q nodes.
+        \path[-stealth', font=\tiny\ttfamily, left]
+          (q0) edge node [xshift=0.1em] {r} (q1)
+          (q1) edge node [xshift=0.1em] {e} (q2);
+      \end{tikzpicture}
+    }\qquad\qquad
+    \subfloat[System \kSys as a composition of processes \kP and \kQ\label{fig:lts_sys}]{
+      \begin{tikzpicture}[>=stealth', shorten >=0.05em, shorten <=0.05em, auto, node distance=2em]
+        \draw[shift={(9em,0)}, color=white] (0em,0em) rectangle (16em,1em);
+
+        % Draw composed system.
+        \node[point, right=10em of q0] (s0) {};
+        \node[point, below=of s0, xshift=2em] (s1) {};
+        \node[point, below=of s0, xshift=-2em] (s2) {};
+        \node[point, below=of s2, xshift=2em] (s3) {};
+        \node[point, below=of s2, xshift=-2em] (s4) {};
+        \node[point, below=of s1, xshift=2em] (s5) {};
+        \node[point, below=of s3, xshift=-2em] (s6) {};
+        \node[point, below=of s5] (s7) {};
+        \node[point, below=2em of s6, xshift=2em] (s8) {};
+        \node[point, below=4em of s6, xshift=-2em] (s9) {};
+        \node[point, below=of s7] (s10) {};
+        \node[label, above=0 of s0]{$\kSys=\kP\!\mid\!\kQ$};
+
+        % Draw transitions between system nodes.
+        \path[-stealth', font=\tiny\ttfamily, left]
+          (s0) edge [line width=1pt] node [right, xshift=0.1em, pos=0.3] {f} (s1)
+          (s0) edge node [pos=0.3] {r} (s2)
+          (s1) edge node [pos=0.3] {r} (s3)
+          (s2) edge [line width=1pt] node [right, xshift=0.1em, pos=0.3] {f} (s3)
+          (s2) edge node [xshift=-0.1em, pos=0.3] {e} (s4)
+          (s1) edge node [right, xshift=0.1em, pos=0.3] {s} (s5)
+          (s4) edge [line width=1pt] node [right, xshift=0.1em, pos=0.3] {f} (s6)
+          (s3) edge node [left, xshift=0.1em, pos=0.3] {e} (s6)
+          (s1) edge [out=270, in=150] node [xshift=0.1em, pos=0.5] {e} (s7)
+          (s5) edge node [xshift=0.1em, pos=0.45] {e} (s7)
+          (s3) edge node [below, xshift=-0.1em, pos=0.45] {s} (s10)
+          (s5) edge [out=330, in=30] node [right, xshift=-0.1em, pos=0.5] {r} (s10.east)
+          (s7) edge node [pos=0.5] {r} (s8)
+          (s3) edge node [xshift=0.1em, pos=0.50] {e} (s8)
+          (s6) edge [out=315, in=150] node [below, xshift=-0.25em, pos=0.4] {s} (s8)
+          (s6) edge node [pos=0.3] {e} (s9)
+          (s10) edge node [below=-0.1em, pos=0.5] {e} (s8)
+          (s8) edge node [below=-0.1em, pos=0.5] {e} (s9);
+      \end{tikzpicture}
+    }
+  }
+  \caption{Local and global states of a component-based system}\label{fig:lts}
+\end{figure}
