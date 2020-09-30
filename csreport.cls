@@ -155,6 +155,44 @@
 \makeatother
 
 
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%  Define command \declaration.
+%  Creates the declaration page for the dissertation.
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\makeatletter
+\newcommand{\removenl}[1]{\def\\{\relax\ifhmode\unskip\fi\space\ignorespaces}#1}
+\newcommand{\declaration}{%
+  \clearpage
+  \thispagestyle{plain}
+  %
+  \begin{center}
+    {\Large\bfseries Faculty of ICT}
+    \vspace{1cm}
+
+    {\large\bfseries Declaration}
+    \vspace{1.5cm}
+  \end{center}
+
+  \noindent I, the undersigned, declare that the dissertation entitled:
+  \newline
+
+  \textsf{\removenl{\@title}}\newline
+
+  
+  \noindent submitted is my work, except where acknowledged and referenced.
+  \newline
+
+  \vspace{3cm}
+  {
+    % \setstretch{2}
+    \noindent\textsf{\@author} \vspace{0.5cm}\\
+    \noindent\textsf{\@date}
+  %   %Signature: & & \makebox[5cm]{\hrulefill}
+  }
+}
+\makeatother
+
+
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 % Chapter, section and TOC title restyling.
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
