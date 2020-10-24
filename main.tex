@@ -40,12 +40,12 @@
   \end{abstract}
 
 
-  % Disable protrusion for TOC, list of figures etc. so that certain 
-  % numbers (e.g. 7) do not spill out of the boundary of the right margin but 
-  % remain on the same margin as the rest of the other numbers.
+  % % Disable protrusion for TOC, list of figures etc. so that certain 
+  % % numbers (e.g. 7) do not spill out of the boundary of the right margin but 
+  % % remain on the same margin as the rest of the other numbers.
   \microtypesetup{protrusion=false} 
   
-  % Switch to roman page numbering until main manuscript body.
+  % % Switch to roman page numbering until main manuscript body.
   \pagenumbering{roman}
 
   % Configure and show TOC and LOF.
@@ -54,17 +54,20 @@
   \addtocontents{toc}{~\hfill\textbf{Page}\par}
   \listoffigures
   
+  
   % Re-enable protrusion as this is typographically nice to have for the rest of 
   % the text in the manuscript.
   \microtypesetup{protrusion=true}
   \clearpage
 
-  % Switch page numbering to roman and include main manuscript content.
+  % % Switch page numbering to roman and include main manuscript content.
   \pagenumbering{arabic}
 
   \input{chapter_1}
 
   \input{chapter_2}
+
+  % Numerous software systems are nowadays architected in terms of \emph{asynchronous components}~\cite{Chappell2004,Josuttis2007,AghaMST97} that execute independently to one another without recourse to a global clock or shared state.
 
   % Add bibliography.
   \bibliographystyle{abbrv}
@@ -72,5 +75,5 @@
 
   \appendix
   \input{appendix}
-
+  
 \end{document}

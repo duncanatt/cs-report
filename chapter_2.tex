@@ -1,7 +1,7 @@
 %!TEX root=main.tex
 \chapter{Background}\label{ch:background}
 
-This chapter presents an overview of the background literature and state-of-the-art in the field of \RV for distributed systems. 
+This chapter presents an overview of the background literature and state of the art in the field of \RV for distributed systems. 
 %
 We first give a brief synopsis of \RV, and define the terms introduced in the preceding chapter.
 %
@@ -11,4 +11,89 @@ Finally, a series of recent works is discussed, comparing and contrasting simila
 %
 This exposition should reassert the current limitations in the area, and in doing so, underscore the novelty of our research contributions proposed in \cref{ch:introduction}.
 
+We start by briefly recalling the two most basic sorting algorithms, since these shall be used later when comparing our work to others.
+%
+The bubble sort (\cref{lst:sorting} left) is a simple sorting algorithm that works by repeatedly going through the list to be sorted, comparing adjacent elements and swapping them if they are in the wrong order.
+%
+This procedure is repeated until the list is left in a sorted order.
+%
 \ldots
+
+\begin{algorithm}[!b]
+  \begin{minipage}[t]{\algcolwidth}
+    \begin{algorithmic}[1]
+      \Require{Array $a$ of numbers}
+      \Ensure{Sorted $a$ in ascending order}
+      \Procedure{BubbleSort}{$a$}
+        \State $\mathrm{int~} i, j, tmp$
+        \State $n = \mathrm{length}(a)$
+        \For{$j$}{1}{$n$}
+          \For{$i$}{0}{$n-1$}
+            \Statex \Indent{2}\Comment{Swap current if larger than next}
+            \If{$a[i] > a[i+1]$}
+              % \Rule
+              \State $tmp = a[i]$
+              \State $a[i] = a[i + 1]$
+              \State $a[i + 1] = tmp$
+            \EndIf
+          \EndFor
+        \EndFor
+      \EndProcedure
+    \end{algorithmic}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{\algcolwidth}
+    \begin{algorithmic}[1]
+      \Require{Array $a$ of numbers}
+      \Ensure{Sorted $a$ in ascending order}
+      \Procedure{InsertionSort}{$a$}
+        \State $\mathrm{int~} i, j, key$
+        \State $n = \mathrm{length}(a)$
+        \For{$j$}{2}{$n$}
+          \State $key=a[j]$
+          \State $i=j-i$
+          \Statex \Indent{2}\Comment{Insert $a[j]$ in the sorted sequence $a[1{\ldots}j-1]$}
+          \While{$i > 0 \land a[i] > key$}
+            \State $a[i+1] = a[i]$
+            \State $i=i-1$
+          \EndWhile
+          \State $a[i+1] = key$
+        \EndFor
+      \EndProcedure
+    \end{algorithmic}
+  \end{minipage}
+  \caption{The bubble and insertion sort algorithms}\label{lst:sorting}
+\end{algorithm}
+
+
+There are a number of works~\cite{FrancalanzaS15,AttardF16,AttardF17,CassarF16,CassarF15,ColomboFG11,SenVAR06,BerkovichBF15} that address \RV in a local concurrent setting; others~\cite{BauerFalcone2016,FalconeJNBB15} use the term decentralised to refer to synchronous monitoring.
+%
+In another work, El-Hokayem \etal~\cite{El-HokayemF17} present a framework whereby orchestrated and choreographed monitor arrangements for \LTLIII~\cite{BauerLS11} can be studied in terms of their performance, including the amount of memory consumed by monitor participants and the number of messages exchanged between them.
+%
+Although relevant to ours, the cited works do not assume any of the defining characteristics of distributed systems, \eg, different network locations, partial failure, \etc, and therefore, shall not be the main focus of the review that follows.
+%
+A comparison of their various characteristics is nevertheless provided in \cref{tbl:concurrent} for the sake of completeness.
+
+\ldots
+
+
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \begin{tabular}{@{} cr|*{6}lc @{}}
+    & \multicolumn{1}{r}{} &\rot{Centralised} & \rot{Global state} & \rot{Asynchronous} & \rot{Shared memory} & \rot{Message passing} & \rot{Total ordering} & \rot{Static setup}\\
+    \cline{2-9}
+    & Attard \etal~\cite{AttardF16} & \cmark & \cmark & \cmark & \omark & \cmark & \omark & \cmark\\
+    & Attard \etal~\cite{AttardF17} & \omark & \smark & \cmark & \omark & \cmark & \omark & \cmark\\
+    & Bauer \etal~\cite{BauerFalcone2016} & \omark & \cmark & \omark & \omark & \cmark & \cmark & \cmark\\
+    & Berkovich \etal~\cite{BerkovichBF15} & \cmark & \cmark & \omark & \cmark & \omark & \cmark & \cmark\\
+    & Cassar \etal~\cite{CassarF15} & \cmark & \cmark & \cmark & \omark & \cmark & \omark & \cmark\\
+    & Cassar \etal~\cite{CassarF16} & \cmark & \cmark & \cmark & \omark & \cmark & \omark & \cmark\\
+    & Colombo \etal~\cite{ColomboFG11} & \cmark & \omark & \cmark & \omark & \cmark & \omark & \omark\\
+    & El-Hokayem \etal~\cite{El-HokayemF17} & \smark & \cmark & \omark & \omark & \omark & \cmark & \cmark\\
+    & Falcone \etal~\cite{FalconeJNBB15} & \cmark & \cmark & \omark & \omark & \cmark & \cmark & \cmark\\
+    & Francalanza \etal~\cite{FrancalanzaS15} & \cmark & \cmark & \cmark & \omark & \cmark & \omark & \cmark\\
+    & Sen \etal~\cite{SenVAR06} & \omark & \cmark & \cmark & \cmark & \omark & \omark & \cmark
+  \end{tabular}
+\caption{State-of-the-art on concurrent monitoring classified by characteristics}\label{tbl:concurrent}
+\end{table}

@@ -1,5 +1,4 @@
-\begin{figure}[b!]
-  \pframe{
+\begin{figure}[t]
     \centering
     \subfloat[The labelled transition systems for processes \kP and \kQ\label{fig:lts_pq}]{
       \begin{tikzpicture}[>=stealth', shorten >=0.05em, shorten <=0.05em, auto, node distance=2em]
@@ -33,10 +32,11 @@
     }\qquad\qquad
     \subfloat[System \kSys as a composition of processes \kP and \kQ\label{fig:lts_sys}]{
       \begin{tikzpicture}[>=stealth', shorten >=0.05em, shorten <=0.05em, auto, node distance=2em]
-        \draw[shift={(9em,0)}, color=white] (0em,0em) rectangle (16em,1em);
+        \draw[shift={(-9em,0)}, color=white] (0em,0em) rectangle (16em,1em);
 
         % Draw composed system.
-        \node[point, right=10em of q0] (s0) {};
+        % \node[point, right=10em of q0] (s0) {};
+        \node[point] (s0) {};
         \node[point, below=of s0, xshift=2em] (s1) {};
         \node[point, below=of s0, xshift=-2em] (s2) {};
         \node[point, below=of s2, xshift=2em] (s3) {};
@@ -71,6 +71,5 @@
           (s8) edge node [below=-0.1em, pos=0.5] {e} (s9);
       \end{tikzpicture}
     }
-  }
   \caption{Local and global states of a component-based system}\label{fig:lts}
 \end{figure}
