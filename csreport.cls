@@ -93,11 +93,11 @@
 \RequirePackage{fancyhdr}
 
 % Provides support for vector-based illustrations.
-\usepackage{tikz}
+\RequirePackage{tikz}
 
 % Provides support sub-floats. This might be replaced with 'subcaption' in the
 % future.
-\usepackage{subfig}
+\RequirePackage{subfig}
 
 
 
