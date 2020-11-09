@@ -18,11 +18,11 @@
 % TODO: fulfilment ..." and possibly, also the declaration of authenticity.
 
 % Unused class options. 
-\DeclareOption{letterpaper}{\OptionNotUsed}
-\DeclareOption{a5paper}{\OptionNotUsed}
-\DeclareOption{b5paper}{\OptionNotUsed}
-\DeclareOption{executivepaper}{\OptionNotUsed}
-\DeclareOption{legalpaper}{\OptionNotUsed}
+% \DeclareOption{letterpaper}{\OptionNotUsed}
+% \DeclareOption{a5paper}{\OptionNotUsed}
+% \DeclareOption{b5paper}{\OptionNotUsed}
+% \DeclareOption{executivepaper}{\OptionNotUsed}
+% \DeclareOption{legalpaper}{\OptionNotUsed}
 
 % Used class options.
 \DeclareOption{draft}{\@drafttrue}
@@ -33,7 +33,7 @@
 % and load base class with hardcoded options.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
-\LoadClass[a4paper]{report}
+\LoadClass[a4paper,9pt]{report} % Does not work override the document class options. Look into it.
 
 
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -62,9 +62,12 @@
   shrink=20
 ]{microtype}
 
+% Consider using minion pro package and mn symbol for even nicer typography.
+
 % Replace default Computer Modern font by Latin Modern. This provides access to
 % teletype text in boldface.
 \RequirePackage{lmodern}
+% \usepackage{MinionPro}
 
 % Provides Helvetica font. Scale font proportionally to match Latin Modern font
 % size.
@@ -129,15 +132,15 @@
 
 % Provides algorithm pseudocode support. Note that 'algpseudocode' command set 
 % provides a pseudocode layout based on top of the 'algorithmicx' package.
-\usepackage{algpseudocode}
+\RequirePackage{algpseudocode}
 
 % Provides support for displaying algorithm floats.
-\usepackage[plain]{algorithm}
+\RequirePackage[plain]{algorithm}
 
 % Provide macro patching commands. This is currently used to reduce the line 
 % spacing in 'algorithmcx' (see 
 % https://tex.stackexchange.com/questions/84816/how-to-modify-line-spacing-in-algorithm-algpseudocode). 
-\usepackage{xpatch}
+\RequirePackage{xpatch}
 
 % Provides SI unit support.
 \RequirePackage[free-standing-units, binary-units]{siunitx}
