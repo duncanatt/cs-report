@@ -386,7 +386,7 @@
   \thispagestyle{plain}
   %
   \begin{center}
-    {\Large\bfseries Faculty of ICT}
+    {\Large\bfseries \@faculty}
     \vspace{1cm}
 
     {\large\bfseries Declaration}
